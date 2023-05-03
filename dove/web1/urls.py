@@ -8,4 +8,3 @@ urlpatterns = [
     path('signup', views.signup,name='signup'),
 
 ]    
-href="{% static 'login.css' %}"
