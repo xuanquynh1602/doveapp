@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
-from web1.forms import RegistrationForm
+from web1.models import Users
 
 # Create your views here.
 def home(request):
@@ -12,24 +12,18 @@ def login(request):
 @csrf_exempt
 def signup(request):
     if request.method == 'POST':
-        registrationForm = RegistrationForm(request.POST)
-        if registrationForm.is_valid():
-            username = registrationForm.cleaned_data['username']
-            
-        
+        username = request.POST['username']
+        password = request.POST['password']
+        name = request.POST['name']
+        new_user = Users(
+            username=username,
+            password=password,
+            name=name
+        )
+        new_user.save()
+        return redirect('web1/login.html')
            
     return render(request,'web1/signup.html')
-from django.shortcuts import render
-from .forms import RegistrationForm
-from django.http import HttpResponse
-def index(request):
-    return render(request, 'pages/home.html')
-def contact(request):
-    return render(request,'pages/contact.html')
-def error(request):
-    return render(request,'pages/error.html')
-def register(request):
-    form = RegistrationForm()
 
 
 
