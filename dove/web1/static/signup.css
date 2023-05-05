@@ -1,7 +1,6 @@
 body{
     background-color: #d5e0f2;
     font-family: sans-serif;
-    background-image: url("static\web1\images\Layer 3.png");
 }
 .container{
     width: 300px;
@@ -12,6 +11,8 @@ body{
     text-align: center; 
     margin: 100px 1000px;
 }
+
+
 .container h2{
     display: inline-block; 
     color: #083156;
